@@ -39,13 +39,13 @@ const userSchema = new mongoose.Schema({
     // resetPasswordExpire: Date,
   });
 
-  userSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) { 
-      next();
-    }
+  // userSchema.pre("save", async function (next) {
+  //   if (!this.isModified("password")) { 
+  //     next();
+  //   }
   
-    this.password = await bcrypt.hash(this.password, 10);
-  });
+  //   this.password = await bcrypt.hash(this.password, 10);
+  // });
 
   // Compare Password
 userSchema.methods.comparePassword = async function (password) {
