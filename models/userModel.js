@@ -1,5 +1,12 @@
 const { default: mongoose } = require("mongoose");
 const validator=require("validator")
+const bcrypt=require("bcryptjs")
+const jwt=require("jsonwebtoken")
+const dotenv=require("dotenv") 
+
+dotenv.config({path:"./app/config/.env"});
+
+// console.log(process.env.JWT_EXPIRE,"DASDASDASD");
 
 const userSchema = new mongoose.Schema({
     name: {
