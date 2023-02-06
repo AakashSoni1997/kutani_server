@@ -4,21 +4,25 @@ const dotenv=require("dotenv")
 const pankajDB=require("./app/database/database")
 app.use(express.json());
 
-const user=require("./routes/userRoute")
-app.use("/api/v1",user)
+const PORT=process.env.PORT ||8000
 dotenv.config({path:"./app/config/.env"})
 
 pankajDB()
-  
 
 
 
-const PORT=process.env.PORT 
-// app.get("/",(req,res)=>{
-//     res.json({
-//         message:"hello"
-//     })
-// })
+//Route Import
+const user=require("./routes/userRoute")
+const home=require("./routes/homeRoute")
+
+
+app.use("/api/v1",user)
+app.use("/api/v1",home)
+
+
+
+
+
 
 
 app.listen(PORT,()=>{
